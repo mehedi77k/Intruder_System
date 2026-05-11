@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Intruder System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="dashboard-wrap">
+
+      <header class="top-card panel">
+        <h1>Smart Intruder System</h1>
+        <div id="systemStatus" class="status-pill offline">OFFLINE</div>
+      </header>
+
+      <section class="camera-card panel">
+        <div class="camera-view">
+          <img id="cameraFeed" alt="Processed Camera Feed" />
+          <div id="cameraFallback" class="camera-fallback">
+            <div class="camera-icon">📷</div>
+            <div class="camera-chip">Camera</div>
+            <p id="cameraFallbackText" class="camera-subtext">
+              Waiting for Python video stream...
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cards-grid">
+        <div class="info-card panel">
+          <div class="card-icon">🗄️</div>
+          <h2>Mode Selection</h2>
+
+          <div class="mode-radio-wrap">
+            <input
+              type="radio"
+              name="homeMode"
+              id="modeAtHome"
+              class="mode-radio"
+              value="AT_HOME"
+            />
+            <label for="modeAtHome" class="mode-radio-label">At Home</label>
+
+            <input
+              type="radio"
+              name="homeMode"
+              id="modeNotAtHome"
+              class="mode-radio"
+              value="NOT_AT_HOME"
+            />
+            <label for="modeNotAtHome" class="mode-radio-label">Not At Home</label>
+          </div>
+
+          <div class="mode-line">
+            Current Mode: <span id="currentModeText">At Home</span>
+          </div>
+        </div>
+
+        <div class="info-card panel center-card">
+          <div class="card-icon">🕵️</div>
+          <h2>Number of Intruders</h2>
+          <div id="intruderCount" class="intruder-count">0</div>
+          <div class="sub-text">Latest detection value from database</div>
+        </div>
+
+        <div class="info-card panel center-card">
+          <div class="card-icon">⚠️</div>
+          <h2>Alert / Not Alert</h2>
+          <div id="alertBadge" class="alert-badge safe">Not Alert</div>
+          <div id="alertInfo" class="sub-text">Waiting for live data...</div>
+        </div>
+      </section>
+
+      <section class="history-block panel">
+        <h2 class="history-heading">Historical &amp; Live Data</h2>
+
+        <div class="pagination-bar">
+          <button id="prevPageBtn" class="page-btn">Prev</button>
+          <span id="pageInfo">Page 1 of 1</span>
+          <button id="nextPageBtn" class="page-btn">Next</button>
+        </div>
+
+        <div class="table-panel">
+          <table>
+            <colgroup>
+              <col class="col-sl" />
+              <col class="col-time" />
+              <col class="col-mode" />
+              <col class="col-detection" />
+            </colgroup>
+
+            <thead>
+              <tr>
+                <th>SL</th>
+                <th>Date &amp; Time</th>
+                <th>MODE</th>
+                <th>DETECTION</th>
+              </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+              <tr>
+                <td colspan="4" class="empty-cell">Loading data...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
